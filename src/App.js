@@ -1,7 +1,7 @@
 import './App.css';
-import './global.css'
-import NavBar from './Components/Navbar';
-import Home from './Components/Pages/Home';
+import './assests/css/global.css'
+import NavBar from './components/Navbar';
+import Home from './components/Pages/Home';
 function App() {
   return (
     <div className="App">

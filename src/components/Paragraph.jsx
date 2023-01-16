@@ -5,7 +5,6 @@ export default function Paragraph(props) {
     </p>
   );
 }
-
 const styles = {
   para: {
     color: "white",
