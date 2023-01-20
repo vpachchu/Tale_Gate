@@ -3,11 +3,15 @@ import tgimg from "../assests/images/tg_book.jpg";
 export default function Img(props) {
   return (
     <Image
-      rounded
       src={tgimg}
-      width={500}
-      height={350}
-      className="p-5 col-15 col-xs-12"
+      width={450}
+      style={styles.img}
+      className="img-responsive p-5"
     />
   );
 }
+const styles = {
+  img: {
+    borderRadius: 70,
+  },
+};

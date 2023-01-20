@@ -5,7 +5,10 @@ import Img from "../Image";
 
 export default function Home() {
   return (
-    <Container className="d-flex flex-column flex-lg-row flex-md-row">
+    <Container
+      className="d-flex flex-column flex-lg-row flex-md-row"
+      style={styles.container}
+    >
       <div>
         <Heading01 text="The Tale Gate" />
         <Paragraph
@@ -21,3 +24,8 @@ export default function Home() {
     </Container>
   );
 }
+const styles = {
+  container: {
+    backgroundColor: "var(--theme-color-one)",
+  },
+};
