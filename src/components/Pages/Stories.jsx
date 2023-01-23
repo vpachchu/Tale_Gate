@@ -1,6 +1,7 @@
 import Story from "../Story";
 import HP_001 from "../../assests/images/hp_001.jpg";
 import Wrap from "../Wrapper";
+import StoryForm from "../StoryForm";
 
 const Books = [
   {
@@ -14,6 +15,7 @@ const Books = [
 export default function Stories() {
   return (
     <Wrap>
+      <StoryForm />
       <Story
         title={Books[0].title}
         author={Books[0].author}

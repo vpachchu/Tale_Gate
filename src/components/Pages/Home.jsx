@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
 import Paragraph from "../Paragraph";
-import Heading01 from "../Heading01";
+import { Heading01 } from "../Heading";
 import Img from "../Image";
 
 export default function Home() {
