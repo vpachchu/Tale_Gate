@@ -60,7 +60,7 @@ export default function StoryItems(props) {
     {
       title: "Harry Potter and the Philosopher's Stone",
       author: "J. K. Rowling",
-      year: "1997",
+      year: "2015",
       src: "https://images.unsplash.com/photo-1608129141559-b27c2573e7e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=422&q=80",
     },
   ];
