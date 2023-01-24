@@ -2,12 +2,18 @@ import { Card, Button } from "react-bootstrap";
 
 export default function Story(props) {
   return (
-    <Card style={{ width: "12rem" }} className="m-4">
-      <Card.Img variant="top" src={props.src} />
+    <Card style={{ width: "12rem" }} className="mt-4 col-6">
+      <Card.Img
+        variant="top"
+        src={props.item.src}
+        style={{ height: "15rem" }}
+      />
       <Card.Body>
-        <Card.Title style={styles.title}>{props.title}</Card.Title>
-        <Card.Text style={styles.author}>Novel by {props.author}</Card.Text>
-        <Card.Text style={styles.year}>- {props.year}</Card.Text>
+        <Card.Title style={styles.title}>{props.item.title}</Card.Title>
+        <Card.Text style={styles.author}>
+          Novel by {props.item.author}
+        </Card.Text>
+        <Card.Text style={styles.year}>- {props.item.year}</Card.Text>
         <Button className="px-2" variant="primary" style={styles.button}>
           Stat Reading...
         </Button>

@@ -13,5 +13,6 @@ const styles = {
     borderRadius: 30,
     borderWidth: 1,
     margin: 50,
+    padding: 30,
   },
 };
