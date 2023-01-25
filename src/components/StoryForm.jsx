@@ -2,13 +2,12 @@ import { useState } from "react";
 import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { Heading02 } from "./Heading";
 
-export default function StoryForm() {
+export default function StoryForm(props) {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-  const [year, setYear] = useState(new Date());
-  const [imglink, setImglink] = useState(
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU"
-  );
+  const [year, setYear] = useState("");
+  const [src, setsrc] = useState("");
+  // "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU"
   const [story, setStory] = useState("");
 
   const handleTitle = (event) => {
@@ -18,10 +17,10 @@ export default function StoryForm() {
     setAuthor(event.target.value);
   };
   const handleYear = (event) => {
-    setYear(new Date(event.target.value));
+    setYear(event.target.value);
   };
-  const handleImglink = (event) => {
-    setImglink(event.target.value);
+  const handlesrc = (event) => {
+    setsrc(event.target.value);
   };
   const handleStory = (event) => {
     setStory(event.target.value);
@@ -31,15 +30,18 @@ export default function StoryForm() {
       title,
       author,
       year,
-      imglink,
+      src,
       story,
     };
     event.preventDefault();
-    console.log(bookData);
+    // console.log(bookData);
+    props.onSaveBook(bookData);
+
     setTitle("");
     setAuthor("");
     setYear("");
-    setImglink("");
+    setsrc("");
+    setStory("");
   };
 
   return (
@@ -59,7 +61,7 @@ export default function StoryForm() {
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label style={styles.formText}>Image Link</Form.Label>
-        <Form.Control placeholder="" value={imglink} onChange={handleImglink} />
+        <Form.Control placeholder="" value={src} onChange={handlesrc} />
       </Form.Group>
       <Form.Group>{/* drop down for genre */}</Form.Group>
       <Form.Group className="my-3">

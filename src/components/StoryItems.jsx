@@ -1,7 +1,8 @@
+import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Story from "./Story";
 
-export default function StoryItems(props) {
+export default function StoryItems({ books }) {
   const Books = [
     {
       title: "Harry Potter and the Philosopher's Stone",
@@ -64,14 +65,20 @@ export default function StoryItems(props) {
       src: "https://images.unsplash.com/photo-1608129141559-b27c2573e7e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=422&q=80",
     },
   ];
+  console.log("In StoryItems.jsx");
+  console.log(books.title);
+  console.log(books.src);
   return (
     <Container>
       <Row>
-        {Books.map((book, index) => (
+        <Col>
+          <Story item={books} />
+        </Col>
+        {/* {Books.map((book, index) => (
           <Col key={Books[index]}>
             <Story item={book} />
           </Col>
-        ))}
+        ))} */}
       </Row>
     </Container>
   );
