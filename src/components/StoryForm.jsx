@@ -6,6 +6,9 @@ export default function StoryForm() {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [year, setYear] = useState(new Date());
+  const [imglink, setImglink] = useState(
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU"
+  );
   const [story, setStory] = useState("");
 
   const handleTitle = (event) => {
@@ -17,15 +20,26 @@ export default function StoryForm() {
   const handleYear = (event) => {
     setYear(new Date(event.target.value));
   };
+  const handleImglink = (event) => {
+    setImglink(event.target.value);
+  };
   const handleStory = (event) => {
     setStory(event.target.value);
   };
   const handleSubmit = (event) => {
+    const bookData = {
+      title,
+      author,
+      year,
+      imglink,
+      story,
+    };
     event.preventDefault();
-    console.log(title);
-    console.log(author);
-    console.log(year);
-    console.log(story);
+    console.log(bookData);
+    setTitle("");
+    setAuthor("");
+    setYear("");
+    setImglink("");
   };
 
   return (
@@ -33,16 +47,21 @@ export default function StoryForm() {
       <Heading02 text="Add new story" color="var(--theme-color-one)" />
       <Form.Group className="mb-3">
         <Form.Label style={styles.formText}>Story Title</Form.Label>
-        <Form.Control placeholder="" onChange={handleTitle} />
+        <Form.Control placeholder="" value={title} onChange={handleTitle} />
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label style={styles.formText}>Author</Form.Label>
-        <Form.Control placeholder="" onChange={handleAuthor} />
+        <Form.Control placeholder="" value={author} onChange={handleAuthor} />
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label style={styles.formText}>Year</Form.Label>
-        <Form.Control placeholder="" onChange={handleYear} />
+        <Form.Control placeholder="" value={year} onChange={handleYear} />
       </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label style={styles.formText}>Image Link</Form.Label>
+        <Form.Control placeholder="" value={imglink} onChange={handleImglink} />
+      </Form.Group>
+      <Form.Group>{/* drop down for genre */}</Form.Group>
       <Form.Group className="my-3">
         <FloatingLabel
           controlId="floatingTextarea2"
@@ -50,6 +69,7 @@ export default function StoryForm() {
         >
           <Form.Control
             as="textarea"
+            value={story}
             style={{ height: "100px" }}
             onChange={handleStory}
           />
