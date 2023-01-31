@@ -7,6 +7,7 @@ export default function StoryForm(props) {
   const [author, setAuthor] = useState("");
   const [year, setYear] = useState("");
   const [src, setsrc] = useState("");
+  const [genre, setGenre] = useState("0");
   // "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU"
   const [story, setStory] = useState("");
 
@@ -22,6 +23,9 @@ export default function StoryForm(props) {
   const handlesrc = (event) => {
     setsrc(event.target.value);
   };
+  const handleGenre = (event) => {
+    setGenre(event.target.value);
+  };
   const handleStory = (event) => {
     setStory(event.target.value);
   };
@@ -31,16 +35,18 @@ export default function StoryForm(props) {
       author,
       year,
       src,
+      genre,
       story,
     };
     event.preventDefault();
-    // console.log(bookData);
+    console.log(bookData);
     props.onSaveBook(bookData);
 
     setTitle("");
     setAuthor("");
     setYear("");
     setsrc("");
+    setGenre("0");
     setStory("");
   };
 
@@ -57,11 +63,26 @@ export default function StoryForm(props) {
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label style={styles.formText}>Year</Form.Label>
+
         <Form.Control placeholder="" value={year} onChange={handleYear} />
       </Form.Group>
+
       <Form.Group className="mb-3">
         <Form.Label style={styles.formText}>Image Link</Form.Label>
         <Form.Control placeholder="" value={src} onChange={handlesrc} />
+      </Form.Group>
+      <Form.Group className="mb-3">
+        <Form.Label style={styles.formText}>Genre</Form.Label>
+        <Form.Select onChange={handleGenre}>
+          <option value="0"></option>
+          <option value="1">Fantasy</option>
+          <option value="2">Sci-fi</option>
+          <option value="3">Drama</option>
+          <option value="4">Romantic</option>
+          <option value="5">Thriller</option>
+          <option value="6">Mystry</option>
+          <option value="6">Historical</option>
+        </Form.Select>
       </Form.Group>
       <Form.Group>{/* drop down for genre */}</Form.Group>
       <Form.Group className="my-3">
