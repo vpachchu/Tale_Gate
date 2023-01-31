@@ -10,8 +10,8 @@ export default function Stories(props) {
       ...enteredBookData,
     };
     console.log("In my Stories.jsx");
-    console.log(bookData);
-    setNewBook(bookData);
+    newBook.push(bookData);
+    console.log(newBook);
   };
 
   return (

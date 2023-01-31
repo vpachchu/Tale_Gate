@@ -3,51 +3,31 @@ import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { Heading02 } from "./Heading";
 
 export default function StoryForm(props) {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [year, setYear] = useState("");
-  const [src, setsrc] = useState("");
-  const [genre, setGenre] = useState("0");
-  // "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU"
-  const [story, setStory] = useState("");
+  //const [bookDatalist, setBookdatalist] = useState([]);
+  const [bookData, setBookdata] = useState({
+    title: "",
+    author: "",
+    year: "",
+    src: "",
+    genre: "",
+    story: "",
+  });
 
-  const handleTitle = (event) => {
-    setTitle(event.target.value);
+  // "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNT0xwyLstvC7wH8jYIKur3GTcSq-g6fj2EbL4wk-qaONHYjBswa3rpFsZJeEjuXcG-lw&usqp=CAU"
+
+  const handleBookdata = (event) => {
+    const newBook = { ...bookData };
+    newBook[event.target.id] = event.target.value;
+    setBookdata(newBook);
   };
-  const handleAuthor = (event) => {
-    setAuthor(event.target.value);
-  };
-  const handleYear = (event) => {
-    setYear(event.target.value);
-  };
-  const handlesrc = (event) => {
-    setsrc(event.target.value);
-  };
-  const handleGenre = (event) => {
-    setGenre(event.target.value);
-  };
-  const handleStory = (event) => {
-    setStory(event.target.value);
-  };
+
   const handleSubmit = (event) => {
-    const bookData = {
-      title,
-      author,
-      year,
-      src,
-      genre,
-      story,
-    };
     event.preventDefault();
     console.log(bookData);
     props.onSaveBook(bookData);
-
-    setTitle("");
-    setAuthor("");
-    setYear("");
-    setsrc("");
-    setGenre("0");
-    setStory("");
+    //bookDatalist.push(bookData);
+    //console.log(bookDatalist);
+    //setBookdata([]);
   };
 
   return (
@@ -55,25 +35,49 @@ export default function StoryForm(props) {
       <Heading02 text="Add new story" color="var(--theme-color-one)" />
       <Form.Group className="mb-3">
         <Form.Label style={styles.formText}>Story Title</Form.Label>
-        <Form.Control placeholder="" value={title} onChange={handleTitle} />
+        <Form.Control
+          placeholder=""
+          value={bookData.title}
+          id="title"
+          onChange={handleBookdata}
+        />
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label style={styles.formText}>Author</Form.Label>
-        <Form.Control placeholder="" value={author} onChange={handleAuthor} />
+        <Form.Control
+          placeholder=""
+          value={bookData.author}
+          id="author"
+          onChange={handleBookdata}
+        />
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label style={styles.formText}>Year</Form.Label>
 
-        <Form.Control placeholder="" value={year} onChange={handleYear} />
+        <Form.Control
+          placeholder=""
+          value={bookData.year}
+          id="year"
+          onChange={handleBookdata}
+        />
       </Form.Group>
 
       <Form.Group className="mb-3">
         <Form.Label style={styles.formText}>Image Link</Form.Label>
-        <Form.Control placeholder="" value={src} onChange={handlesrc} />
+        <Form.Control
+          placeholder=""
+          value={bookData.src}
+          id="src"
+          onChange={handleBookdata}
+        />
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label style={styles.formText}>Genre</Form.Label>
-        <Form.Select onChange={handleGenre}>
+        <Form.Select
+          onChange={handleBookdata}
+          value={bookData.genre}
+          id="genre"
+        >
           <option value="0"></option>
           <option value="1">Fantasy</option>
           <option value="2">Sci-fi</option>
@@ -92,9 +96,10 @@ export default function StoryForm(props) {
         >
           <Form.Control
             as="textarea"
-            value={story}
+            value={bookData.story}
+            id="story"
             style={{ height: "100px" }}
-            onChange={handleStory}
+            onChange={handleBookdata}
           />
         </FloatingLabel>
       </Form.Group>

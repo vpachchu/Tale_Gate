@@ -3,14 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Story from "./Story";
 
 export default function StoryItems({ newBook }) {
-  const [books, setBooks] = useState([
-    {
-      title: "Harry Potter and the Philosopher's Stone",
-      author: "J. K. Rowling",
-      year: "1997",
-      src: "https://images.unsplash.com/photo-1626618012641-bfbca5a31239?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80",
-    },
-  ]);
+  const books = [];
   // {
   //   title: "Harry Potter and the Philosopher's Stone",
   //   author: "J. K. Rowling",
@@ -71,18 +64,16 @@ export default function StoryItems({ newBook }) {
   //   year: "2015",
   //   src: "https://images.unsplash.com/photo-1608129141559-b27c2573e7e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=422&q=80",
   // },
-  const handleNewBooks = () => {
-    setBooks(newBook);
-  };
+  const handleNewBooks = () => {};
 
-  console.log("In StoryItems.jsx");
+  // console.log("In StoryItems.jsx");
   //console.log(newBook.title);
-  console.log(books);
+  console.log(newBook);
   return (
     <Container onChange={handleNewBooks}>
       <Row>
-        {books.map((book, index) => (
-          <Col key={books[index]}>
+        {newBook.map((book, index) => (
+          <Col key={newBook[index]}>
             <Story item={book} />
           </Col>
         ))}
